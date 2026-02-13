@@ -1,0 +1,166 @@
+[1mdiff --git a/src/app/components/Sidebar.tsx b/src/app/components/Sidebar.tsx[m
+[1mindex 9291dd2..0e31e82 100644[m
+[1m--- a/src/app/components/Sidebar.tsx[m
+[1m+++ b/src/app/components/Sidebar.tsx[m
+[36m@@ -35,7 +35,7 @@[m [mconst MenuItem = ({[m
+   onClick,[m
+ }: MenuItemProps) => {[m
+   const baseClass =[m
+[31m-    "flex items-center justify-between mx-4 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer transition no-underline hover:no-underline";[m
+[32m+[m[32m    "flex items-center justify-between mx-4 px-4 py-2 rounded-full text-sm font-semibold cursor-pointer transition";[m
+ [m
+   const activeClass = active[m
+     ? "bg-[#EAF6F2] text-[#36656b]"[m
+[36m@@ -45,15 +45,11 @@[m [mconst MenuItem = ({[m
+     <div className={`${baseClass} ${activeClass}`}>[m
+       <div className="flex items-center gap-3">[m
+         {icon}[m
+[31m-        <span className="no-underline">{label}</span>[m
+[32m+[m[32m        <span>{label}</span>[m
+       </div>[m
+ [m
+       {arrow && ([m
+[31m-        <span[m
+[31m-          className={`text-xs no-underline decoration-transparent pointer-events-none ${[m
+[31m-            open ? "rotate-180" : ""[m
+[31m-          }`}[m
+[31m-        >[m
+[32m+[m[32m        <span className={`text-xs ${open ? "rotate-180" : ""}`}>[m
+           ▾[m
+         </span>[m
+       )}[m
+[36m@@ -62,11 +58,7 @@[m [mconst MenuItem = ({[m
+ [m
+   if (href) {[m
+     return ([m
+[31m-      <Link[m
+[31m-        href={href}[m
+[31m-        className="block no-underline hover:no-underline decoration-transparent"[m
+[31m-        style={{ textDecoration: "none" }}[m
+[31m-      >[m
+[32m+[m[32m      <Link href={href} className="block no-underline">[m
+         {content}[m
+       </Link>[m
+     );[m
+[36m@@ -86,16 +78,23 @@[m [mexport default function Sidebar() {[m
+ [m
+   return ([m
+     <aside className="h-screen w-64 bg-white flex flex-col">[m
+[31m-      {/* Logo */}[m
+[31m-      <div className="h-16 flex items-center gap-3 px-6">[m
+[32m+[m
+[32m+[m[32m      {/* 🔥 Logo Section */}[m
+[32m+[m[32m      <div className="h-16 flex items-center gap-3 px-6 ">[m
+[32m+[m[41m        [m
+[32m+[m[32m        {/* Unique Logo Box */}[m
+         <div className="w-10 h-10 rounded-xl bg-[#36656b] text-white flex items-center justify-center text-lg font-bold">[m
+           S[m
+         </div>[m
+[31m-        <h1 className="text-lg font-bold text-[#36656b]">StoneFleet</h1>[m
+[32m+[m
+[32m+[m[32m        <h1 className="text-lg font-bold text-[#36656b]">[m
+[32m+[m[32m          StoneFleet[m
+[32m+[m[32m        </h1>[m
+       </div>[m
+ [m
+[31m-      {/* Menu */}[m
+[32m+[m[32m      {/* Menu Section */}[m
+       <nav className="mt-6 space-y-1 flex-1 overflow-auto">[m
+[32m+[m
+         <MenuItem[m
+           label="LR Booking New"[m
+           href="/tms/lr-booking"[m
+[36m@@ -114,18 +113,14 @@[m [mexport default function Sidebar() {[m
+           label="Trip Start"[m
+           href="/tms/trip-start"[m
+           active={pathname === "/tms/trip-start"}[m
+[31m-          icon={[m
+[31m-            <PlayCircle className={iconClass(pathname === "/tms/trip-start")} />[m
+[31m-          }[m
+[32m+[m[32m          icon={<PlayCircle className={iconClass(pathname === "/tms/trip-start")} />}[m
+         />[m
+ [m
+         <MenuItem[m
+           label="Trip Close"[m
+           href="/tms/trip-close"[m
+           active={pathname === "/tms/trip-close"}[m
+[31m-          icon={[m
+[31m-            <StopCircle className={iconClass(pathname === "/tms/trip-close")} />[m
+[31m-          }[m
+[32m+[m[32m          icon={<StopCircle className={iconClass(pathname === "/tms/trip-close")} />}[m
+         />[m
+ [m
+         <MenuItem[m
+[36m@@ -139,9 +134,7 @@[m [mexport default function Sidebar() {[m
+           label="Vehicle Status Update"[m
+           href="/tms/vehicle-status"[m
+           active={pathname === "/tms/vehicle-status"}[m
+[31m-          icon={[m
+[31m-            <Truck className={iconClass(pathname === "/tms/vehicle-status")} />[m
+[31m-          }[m
+[32m+[m[32m          icon={<Truck className={iconClass(pathname === "/tms/vehicle-status")} />}[m
+         />[m
+ [m
+         <MenuItem[m
+[36m@@ -155,11 +148,7 @@[m [mexport default function Sidebar() {[m
+           label="Transport Invoice"[m
+           href="/tms/transport-invoice"[m
+           active={pathname === "/tms/transport-invoice"}[m
+[31m-          icon={[m
+[31m-            <Receipt[m
+[31m-              className={iconClass(pathname === "/tms/transport-invoice")}[m
+[31m-            />[m
+[31m-          }[m
+[32m+[m[32m          icon={<Receipt className={iconClass(pathname === "/tms/transport-invoice")} />}[m
+         />[m
+ [m
+         {/* TMS Report */}[m
+[36m@@ -174,39 +163,16 @@[m [mexport default function Sidebar() {[m
+ [m
+         {reportOpen && ([m
+           <div className="ml-10 mt-1 space-y-1 text-sm">[m
+[31m-            <MenuItem[m
+[31m-              label="- Trip Report"[m
+[31m-              href="/tms-report/trip"[m
+[31m-              active={pathname === "/tms-report/trip"}[m
+[31m-            />[m
+[31m-            <MenuItem[m
+[31m-              label="- TMS MIS Report"[m
+[31m-              href="/tms-report/tms-mis"[m
+[31m-              active={pathname === "/tms-report/tms-mis"}[m
+[31m-            />[m
+[31m-            <MenuItem[m
+[31m-              label="- MIS Sales Report"[m
+[31m-              href="/tms-report/mis-sales"[m
+[31m-              active={pathname === "/tms-report/mis-sales"}[m
+[31m-            />[m
+[31m-            <MenuItem[m
+[31m-              label="- Vehicle Movement Report"[m
+[31m-              href="/tms-report/vehicle-movement"[m
+[31m-              active={pathname === "/tms-report/vehicle-movement"}[m
+[31m-            />[m
+[31m-            <MenuItem[m
+[31m-              label="- Driver Status Report"[m
+[31m-              href="/tms-report/driver-status"[m
+[31m-              active={pathname === "/tms-report/driver-status"}[m
+[31m-            />[m
+[31m-            <MenuItem[m
+[31m-              label="- Vehicle TAT Report"[m
+[31m-              href="/tms-report/vehicle-tat"[m
+[31m-              active={pathname === "/tms-report/vehicle-tat"}[m
+[31m-            />[m
+[32m+[m[32m            <MenuItem label="- Trip Report" href="/tms-report/trip" active={pathname === "/tms-report/trip"} />[m
+[32m+[m[32m            <MenuItem label="- TMS MIS Report" href="/tms-report/tms-mis" active={pathname === "/tms-report/tms-mis"} />[m
+[32m+[m[32m            <MenuItem label="- MIS Sales Report" href="/tms-report/mis-sales" active={pathname === "/tms-report/mis-sales"} />[m
+[32m+[m[32m            <MenuItem label="- Vehicle Movement Report" href="/tms-report/vehicle-movement" active={pathname === "/tms-report/vehicle-movement"} />[m
+[32m+[m[32m            <MenuItem label="- Driver Status Report" href="/tms-report/driver-status" active={pathname === "/tms-report/driver-status"} />[m
+[32m+[m[32m            <MenuItem label="- Vehicle TAT Report" href="/tms-report/vehicle-tat" active={pathname === "/tms-report/vehicle-tat"} />[m
+           </div>[m
+         )}[m
+[32m+[m
+       </nav>[m
+     </aside>[m
+   );[m
+[31m-}[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
