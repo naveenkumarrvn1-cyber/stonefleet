@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/* 🌿 Brand Color */
+:root {
+  --brand: #36656b;
+}
+
+/* 🌐 Page background */
+body {
+  background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* 📝 Headings ONLY */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--brand);
+}
+
+/* 📝 Normal text */
+p, label {
+  color: #374151; /* gray-700 */
+}
+
+/* 🔗 Links */
+a {
+  color: inherit; /* IMPORTANT */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 🔘 Buttons */
+button {
+  background-color: var(--brand);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ============================= */
+/* 🧭 SIDEBAR FORCE GRAY TEXT */
+/* ============================= */
+
+.sidebar,
+.sidebar a,
+.sidebar span {
+  color: #9ca3af; /* 🩶 gray-400 */
+}
+
+/* 🟢 Active menu */
+.sidebar .active {
+  background-color: rgba(54, 101, 107, 0.2);
+  color: #9ca3af; /* text still gray */
+}
