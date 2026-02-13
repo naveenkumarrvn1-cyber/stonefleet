@@ -114,14 +114,18 @@ export default function Sidebar() {
           label="Trip Start"
           href="/tms/trip-start"
           active={pathname === "/tms/trip-start"}
-          icon={<PlayCircle className={iconClass(pathname === "/tms/trip-start")} />}
+          icon={
+            <PlayCircle className={iconClass(pathname === "/tms/trip-start")} />
+          }
         />
 
         <MenuItem
           label="Trip Close"
           href="/tms/trip-close"
           active={pathname === "/tms/trip-close"}
-          icon={<StopCircle className={iconClass(pathname === "/tms/trip-close")} />}
+          icon={
+            <StopCircle className={iconClass(pathname === "/tms/trip-close")} />
+          }
         />
 
         <MenuItem
@@ -135,7 +139,9 @@ export default function Sidebar() {
           label="Vehicle Status Update"
           href="/tms/vehicle-status"
           active={pathname === "/tms/vehicle-status"}
-          icon={<Truck className={iconClass(pathname === "/tms/vehicle-status")} />}
+          icon={
+            <Truck className={iconClass(pathname === "/tms/vehicle-status")} />
+          }
         />
 
         <MenuItem
